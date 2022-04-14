@@ -1,0 +1,31 @@
+img {
+  width: 100%;
+}
+
+.site-header ul.icons {
+  list-style: none;
+}
+
+.popular-products .brand, 
+.popular-products .likes {
+    font-size: .8rem;
+    color: #777;
+}
+
+.site-footer {
+  background-color: lightgray;
+  padding: 50px;
+}
+
+.large-spot {
+  position: relative;
+}
+
+.large-spot .content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 75%;
+  text-align: center;
+}

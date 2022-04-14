@@ -1,0 +1,25 @@
+<section class="row mb-4">
+  <img
+    src="<%= product.imageUrl %>"
+    class="d-block col-5"
+    alt=""
+  />
+  <div class="col-7">
+    <h1 class="mb-3">
+        <%= product.name %>
+    </h1>
+    <div class="mb-3">
+        <%= product.brand %>
+    </div>
+    <div class="mb-3">
+        <%= product.description %>
+    </div>
+    <div class="mb-3">
+        <%= product.price %> SEK
+    </div>
+    <div class="mb-3">
+        Likes <%= product.likes %>
+    </div>
+    <button class="p-2">Köp nu</button>
+  </div>
+</section>
