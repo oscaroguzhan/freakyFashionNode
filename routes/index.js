@@ -1,14 +1,32 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
 // GET http://localhost:3000/
-router.get('/', function(req, res) {
- 
-  const products = req.app.locals.products;
+router.get("/", async function (req, res) {
+  // get the product data from app.js (because we define in app.js so it is global and we can reach by using locals)
 
-  res.render('index', { 
-    title: 'Freaky Fashion AB',
-    popularProducts: products
+  //########## hardkodad database innan vi skapade database i docker
+  //const products = req.app.locals.products;
+  // respond has a render method that define the view and send data such as title and products into view motor 
+
+  const db = req.app.locals.db;
+
+  const sql = `
+    SELECT id,
+           name,
+           description,
+           brand,
+           image_url,
+           price,
+           likes,
+           url_slug
+      FROM product
+  `;
+
+  const result = await db.query(sql);
+  res.render("index", {
+    title: "Freaky Fashion AB",
+    popularProducts: result.rows,
   });
 });
 

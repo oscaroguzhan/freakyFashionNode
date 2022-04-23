@@ -4,35 +4,27 @@
 <section class="popular-products mb-4">
   <h2 class="text-center mb-4">Populära produkter</h2>
   <div class="row">
+    <!-- foreach loop to get product info from the products list-->
+    <!-- do not forget that ejs syntax with looping open and closing tags-->
+    <% popularProducts.forEach(product => { %>
 
-    <% popularProducts.forEach(product => {  %>
-
-      <div class="product-card col-3 mb-3">
-        <a href="/products/<%= product.urlSlug %>">   
-          <img
-            src="<%= product.imageUrl %>"
-            alt=""
-            class="mb-2"
-          />
-          <div class="row mb-1">
-            <div class="brand col">
-              <%= product.brand %>
-            </div>
-            <div class="likes col text-end">
-              <i class="bi bi-heart-fill"></i> <%= product.likes %>
-            </div>
+    <div class="product-card col-3 mb-3">
+      <!-- link dynamically the product details page -->
+      <a href="/products/<%= product.url_slug %>">
+        <img src="<%= product.image_url %>" alt="" class="mb-2" />
+        <div class="row mb-1">
+          <div class="brand col"><%= product.brand %></div>
+          <div class="likes col text-end">
+            <i class="bi bi-heart-fill"></i> <%= product.likes %>
           </div>
-          <div class="row mb-1">
-            <div class="name col">
-              <%= product.name %>
-            </div>
-            <div class="price col text-end">
-              <%= product.price %> SEK</div>
-          </div>
-          </a>
-      </div>
+        </div>
+        <div class="row mb-1">
+          <div class="name col"><%= product.name %></div>
+          <div class="price col text-end"><%= product.price %> SEK</div>
+        </div>
+      </a>
+    </div>
 
     <% }) %>
-    
   </div>
 </section>
