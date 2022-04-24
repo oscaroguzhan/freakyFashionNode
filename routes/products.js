@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-// GET http://localhost:3000/products/vit-tshirt (URI-segment)
+// GET anrop till http://localhost:3000/products/vit-tshirt (URI-segment)
 router.get("/:urlSlug", async function (req, res) {
   // plocka ut sista delen av URI-segmentet, t.ex. om URI
   // ser ut så här "/products/vit-tshirt", så plockar vi ut sista

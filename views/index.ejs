@@ -7,23 +7,8 @@
     <!-- foreach loop to get product info from the products list-->
     <!-- do not forget that ejs syntax with looping open and closing tags-->
     <% popularProducts.forEach(product => { %>
-
-    <div class="product-card col-3 mb-3">
-      <!-- link dynamically the product details page -->
-      <a href="/products/<%= product.url_slug %>">
-        <img src="<%= product.image_url %>" alt="" class="mb-2" />
-        <div class="row mb-1">
-          <div class="brand col"><%= product.brand %></div>
-          <div class="likes col text-end">
-            <i class="bi bi-heart-fill"></i> <%= product.likes %>
-          </div>
-        </div>
-        <div class="row mb-1">
-          <div class="name col"><%= product.name %></div>
-          <div class="price col text-end"><%= product.price %> SEK</div>
-        </div>
-      </a>
-    </div>
+      <%- include('shared/partials/product-card.ejs', {product}) %>
+    <!--  -->
 
     <% }) %>
   </div>

@@ -3,7 +3,7 @@ var router = express.Router();
 
 // GET http://localhost:3000/
 router.get("/", async function (req, res) {
-  // get the product data from app.js (because we define in app.js so it is global and we can reach by using locals)
+  // HARDKODAD -get the product data from app.js (because we define in app.js so it is global and we can reach by using locals)
 
   //########## hardkodad database innan vi skapade database i docker
   //const products = req.app.locals.products;

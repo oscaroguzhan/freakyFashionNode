@@ -6,20 +6,20 @@ var logger = require("morgan");
 // definera layout ejs biblioteket
 var expressLayouts = require("express-ejs-layouts");
 // skapa en kopia av Pool objekt
-const {Pool} = require('pg');
+const { Pool } = require("pg");
 var indexRouter = require("./routes/index");
 var productsRouter = require("./routes/products");
 var searchRouter = require("./routes/search");
+var categoriesRouter = require("./routes/categories");
 var app = express();
 
-// inställningar för att kunna till database som ligger in i container i docker 
-app.locals.db = new Pool ({
-  host: 'localhost',
-  user: 'postgres',
-  password:'secretpassword',
-  database:'freakyfashion'
+// inställningar för att kunna till database som ligger in i container i docker
+app.locals.db = new Pool({
+  host: "localhost",
+  user: "postgres",
+  password: "secretpassword",
+  database: "freakyfashion",
 });
-
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -41,6 +41,8 @@ app.use("/products", productsRouter);
 
 //setup search router
 app.use("/search", searchRouter);
+
+app.use("/categories", categoriesRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
