@@ -3,6 +3,7 @@ var router = express.Router();
 
 // GET anrop till http://localhost:3000/products/vit-tshirt (URI-segment)
 router.get("/:urlSlug", async function (req, res) {
+
   // plocka ut sista delen av URI-segmentet, t.ex. om URI
   // ser ut så här "/products/vit-tshirt", så plockar vi ut sista
   // delen, dvs. "vit-tshirt"
@@ -10,6 +11,7 @@ router.get("/:urlSlug", async function (req, res) {
 
   const db = req.app.locals.db;
 
+  // här vi vill hämta ut alla produkter som har urlSlugen lika med värdet av urlSlug vi skickar med
   const sql = `
     SELECT id,
       name,

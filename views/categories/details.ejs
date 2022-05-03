@@ -1,1 +1,8 @@
-<h3>Visa produkter kopplade till kategorin här...</h3>
+<section >
+    <h1 class="text-center "><%= category.name%></h1>
+    <div class="row">
+      <% category.products.forEach(product => { %>
+      <%- include("../shared/partials/product-card", {product}) %> <% }) %>
+    </div>
+  </section>
+  

@@ -10,10 +10,15 @@ const { Pool } = require("pg");
 var indexRouter = require("./routes/index");
 var productsRouter = require("./routes/products");
 var searchRouter = require("./routes/search");
+// TODO: SKAPA EN NY ROUTER SOM HANTERAR TILL NY ANROP TILL CATEGORIES
+// DENNA KUNNA SKA HANTERA BÅDA
+//GET localhost://3000/categories
+//GET localhost://3000/categories/tshirts (där tshirts är en urlSlug)
 var categoriesRouter = require("./routes/categories");
 var app = express();
 
 // inställningar för att kunna till database som ligger in i container i docker
+// vi har mappat localhost 5432 porten in till en container i docker
 app.locals.db = new Pool({
   host: "localhost",
   user: "postgres",
@@ -22,6 +27,9 @@ app.locals.db = new Pool({
 });
 
 // view engine setup
+// kommande ANROPET GÅR GENOM MIDDLEWARES tills får en hit och sen mappas vidare till
+//ens router. vilken trigger funktionen i routern (get request) och sen response renderar
+// vi och skickar vi till vy sidan där ejs tillsammans med statiska html display i webläsaren
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 //setup expresslayout
@@ -36,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 //setup products router
+// vi mappar /products till productsRouter
 // GET | POST | DELETE | PUT /products
 app.use("/products", productsRouter);
 
